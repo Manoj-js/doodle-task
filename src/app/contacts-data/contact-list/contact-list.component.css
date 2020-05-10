@@ -46,3 +46,7 @@ p.email {
   min-height: calc(100vh - 20px);
 }
 }
+.modal-header {
+  background-color:#007bff;
+  color: white;
+}
