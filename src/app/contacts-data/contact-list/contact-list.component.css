@@ -1,0 +1,48 @@
+th {
+  padding: 10px;
+}
+
+/* @media (max-width:767px) {
+  td {
+      width: 5px;
+  }
+} */
+span.circle {
+  height: 45px;
+  width: 45px;
+  background-color: rgb(111, 157, 255);
+  border-radius: 50%;
+  display: inline-block;
+  padding-bottom: 10px;
+  align-content: center;
+}
+
+span.text {
+  display: inline-block;
+}
+
+p.email {
+  font-size: smaller;
+}
+
+.fa-user-o {
+
+  text-align: center;
+
+  padding-left: 9px;
+
+}
+
+
+.modal-dialog {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+@media(max-width: 768px) {
+.modal-dialog {
+  min-height: calc(100vh - 20px);
+}
+}
