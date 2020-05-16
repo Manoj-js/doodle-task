@@ -17,6 +17,7 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
   id: number;
   editMode = false;
   routeSub: Subscription;
+  submitted = false;
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
@@ -30,6 +31,9 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
       this.editMode = params.id != null;
       this.initForm();
     });
+  }
+  get f() {
+    return this.detailForm.controls;
   }
   private initForm() {
     let fullname = '';
@@ -50,19 +54,30 @@ export class ContactCreateComponent implements OnInit, OnDestroy {
     this.detailForm = new FormGroup({
       fullname: new FormControl(fullname, Validators.required),
       email: new FormControl(email, [Validators.required, Validators.email]),
-      phone: new FormControl(phone, Validators.required),
+      phone: new FormControl(phone, [
+        Validators.required,
+        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+      ]),
       company: new FormControl(company, Validators.required),
       address: new FormControl(address, Validators.required),
     });
   }
 
   onSubmit() {
+    this.submitted = true;
+
+    if (!this.detailForm.valid) {
+      return;
+    }
     if (this.editMode) {
       this.contactService.updateContact(this.id, this.detailForm.value);
       this.toastr.info('Contact Updated');
+      this.submitted = false;
+      this.detailForm.reset();
     } else {
       this.contactService.addContact(this.detailForm.value);
       this.toastr.success('New Contact Added');
+      this.submitted = false;
       this.detailForm.reset();
     }
     this.onCancel();

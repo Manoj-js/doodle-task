@@ -4,6 +4,7 @@ export class Contact {
     public email: string,
     public phone: number,
     public company: string,
-    public address: string
+    public address: string,
+    public isSelected?: boolean
   ) {}
 }

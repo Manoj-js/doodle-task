@@ -6,18 +6,28 @@ div.card-body {
   padding: 15px;
 }
 
-
+.card-header{
+  background-color: #e9ecef; padding: 13px;
+}
 .detail {
-  margin-top: 90px;
-  padding-top: 90px;
+  margin-top: 33px;
+
   text-align: center;
-  margin-bottom: 15px;
+
 }
 
 div.row {
   padding: 3px;
 }
+label.col-md-4{
 
+  display: flex;
+
+  align-self: stretch;
+
+
+
+}
 .head{
   display: inline-block;
   margin-left: 20px;

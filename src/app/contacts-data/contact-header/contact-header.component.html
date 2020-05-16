@@ -1,0 +1,28 @@
+<div style="padding: 15px; max-width: 330px;">
+  <span>
+    <h4><i class="fa fa-address-book" aria-hidden="true"></i> Contacts</h4>
+  </span>
+  <p>welcome to contact page</p>
+  <div class="input-group">
+    <input
+      style="background-color: #e9ecef;"
+      placeholder="search..."
+      class="form-control py-2 rounded-pill"
+      type="search"
+    />
+    <span class="input-group-append">
+      <button class="btn rounded-pill border-0 ml-n5" type="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+    <span>
+      <button
+        style="border-radius: 6px;"
+        class="btn btn-primary ml-2"
+        (click)="addContact()"
+      >
+        <i class="fa fa-plus" aria-hidden="true"></i> Add Contact
+      </button>
+    </span>
+  </div>
+</div>

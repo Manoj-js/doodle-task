@@ -1,69 +1,84 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" routerLink="/contact">DoodleBlue</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
+    <a class="navbar-brand ml-3" routerLink="/contact">DoodleBlue</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto"></ul>
-    <form class="form-inline" style="padding: 5px;">
-      <select
-      class="form-control form-control-sm"
-        id="inlineFormCustomSelectPref"
-        (change)="onUserChange($event.target.value)"
-      >
-        <option *ngFor="let cont of contacts"> {{ cont.fullname }}</option>
-      </select>
-    </form>
-    <div>
-      <button type="button" class="btn btn-primary ml-2" (click)="Model.show()">
-        <i class="fa fa-bell" aria-hidden="true"></i
-        ><span class="badge badge-light">{{ this.messages.length }}</span>
-      </button>
-      <div
-        bsModal
-        #model="bs-modal"
-        class="modal fade"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-danger" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Your Messages</h4>
-            </div>
-            <div class="modal-body">
-              <div
-                class="list-group"
-                *ngFor="let msg of messages; let i = index"
-              >
-                <a class="list-group-item list-group-item-action">
-                  <h5>From - {{ msg.from }}</h5>
-                  <p>Message - {{ msg.message }}</p>
-                </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"></ul>
+      <form class="form-inline" style="padding: 5px;">
+        <select
+          class="form-control form-control-sm selectWrapper"
+          id="inlineFormCustomSelectPref"
+          (change)="onUserChange($event.target.value)"
+        >
+          <option *ngFor="let cont of contacts"> {{ cont.fullname }}</option>
+        </select>
+      </form>
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary ml-2"
+          (click)="Model.show()"
+        >
+          <i class="fa fa-bell" aria-hidden="true"></i
+          ><span class="badge badge-light">{{ this.messages.length }}</span>
+        </button>
+        <div
+          bsModal
+          #model="bs-modal"
+          class="modal fade"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+        >
+          <div class="modal-dialog modal-danger" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Your Messages</h4>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="Model.hide()"
-                data-dismiss="modal"
-              >
-                Okay
-              </button>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="list-group">
+                      <a
+                        class="list-group-item list-group-item-action"
+                        *ngFor="let msg of messages; let i = index"
+                      >
+                        <strong>From - {{ msg.from }}</strong>
+                        <p>Message - {{ msg.message }}</p>
+                      </a>
+                      <div class="d-flex justify-content-center">
+                        <p
+                          style="font-size: 17px;"
+                          *ngIf="this.messages.length === 0"
+                        >
+                          No Messages Available
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="Model.hide()"
+                  data-dismiss="modal"
+                >
+                  Okay
+                </button>
+              </div>
             </div>
           </div>
         </div>

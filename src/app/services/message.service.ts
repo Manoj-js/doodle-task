@@ -8,8 +8,16 @@ import { Message } from '../models/message';
 export class MessageService {
   private messageUpdated = new Subject<Message[]>();
   private messages: Message[] = [
-    new Message('akash', 'manoj', 'hi bro'),
-    new Message('manoj', 'akash', 'hi bro'),
+    {
+      from : 'akash',
+      to : 'manoj',
+      message : 'hi bro'
+    },
+    {
+      from : 'manoj',
+      to : 'akash',
+      message : 'hi bro'
+    }
   ];
   constructor() {}
 
@@ -22,7 +30,7 @@ export class MessageService {
   }
 
   addMessage(message: Message) {
-    this.messages.push(message);
+    this.messages.unshift(message);
     this.messageUpdated.next(this.messages.slice());
   }
 }

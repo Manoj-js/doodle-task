@@ -1,145 +1,141 @@
-<div class="detail" style="text-align: center;">
-  <div class="col-xs-12">
-    <div class="card">
-      <div
-        class="card-header"
-        style="background-color: #e9ecef; padding: 15px;"
-      >
-        <div>
-          <span class="head">
-            <h5>{{ editMode ? "Update" : "Add" }} Contact</h5>
-          </span>
-          <span class="delete pull-right">
-
-            <button
-              *ngIf="editMode"
-              class="btn btn-outline-primary "
-              (click)="onDelete()"
+<div class="detail mb-5">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <span class="head">
+          <h5>{{ editMode ? "Update" : "Add" }} Contact</h5>
+        </span>
+        <span class="delete pull-right">
+          <button
+            *ngIf="editMode"
+            class="btn btn-outline-primary"
+            (click)="onDelete()"
+          >
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="card-body" style="background-color: #fff;">
+      <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-between">
+          <label class="col-md-4">Full Name </label>
+          <div class="form-group col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-md rounded-0"
+              placeholder="Fullname"
+              formControlName="fullname"
+              #fullname
+              [ngClass]="{
+                'is-invalid': submitted && f.fullname.errors
+              }"
+            />
+            <div
+              *ngIf="submitted && f.fullname.errors"
+              class="invalid-feedback"
             >
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-          </span>
+              <div *ngIf="f.fullname.errors.required">Name is required</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card-body" style="background-color: #fff;">
-        <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
-          <div class="row">
-            <label class="col-md-4">Full Name: </label>
-            <div class="form-group col-md-8">
-              <input
-                type="text"
-                class="form-control form-control-md rounded-0"
-                placeholder="Fullname"
-                formControlName="fullname"
-                #fullname
-                [ngClass]="{
-                  'is-invalid':
-                    detailForm.get('fullname').touched &&
-                    detailForm.get('fullname').invalid
-                }"
-              />
-              <div class="invalid-feedback">
-                <div>FullName is required</div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <label class="col-md-4">Email :</label>
-            <div class="form-group col-md-8">
-              <input
-                type="email"
-                class="form-control form-control-md rounded-0"
-                placeholder="Email"
-                formControlName="email"
-                #email
-                [ngClass]="{
-                  'is-invalid':
-                    detailForm.get('email').touched &&
-                    detailForm.get('email').invalid
-                }"
-              />
-              <div class="invalid-feedback">
-                <div>Email is required</div>
+        <div class="row justify-content-between">
+          <label class="col-md-4">Email </label>
+          <div class="form-group col-md-8">
+            <input
+              type="email"
+              class="form-control form-control-md rounded-0"
+              placeholder="Email"
+              formControlName="email"
+              #email
+              [ngClass]="{
+                'is-invalid': submitted && f.email.errors
+              }"
+            />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">
+                Email must be a valid email address
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="row">
-            <label class="col-md-4">Phone :</label>
-            <div class="form-group col-md-8">
-              <input
-                type="tel"
-                class="form-control form-control-md rounded-0"
-                placeholder="phone"
-                formControlName="phone"
-                #phone
-                [ngClass]="{
-                  'is-invalid':
-                    detailForm.get('phone').touched &&
-                    detailForm.get('phone').invalid
-                }"
-              />
-              <div class="invalid-feedback">
-                <div>Phone is required</div>
+        <div class="row justify-content-between">
+          <label class="col-md-4">Phone </label>
+          <div class="form-group col-md-8">
+            <input
+              type="tel"
+              class="form-control form-control-md rounded-0"
+              placeholder="Mobile Number"
+              formControlName="phone"
+              #phone
+              [ngClass]="{
+                'is-invalid': submitted && f.phone.errors
+              }"
+            />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors.required">
+                Mobile Number is required.
+              </div>
+              <div *ngIf="f.phone.errors.pattern">
+                Please, Enter a valid Mobile Number
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="row">
-            <label class="col-md-4">Company :</label>
-            <div class="form-group col-md-8">
-              <input
-                type="text"
-                class="form-control form-control-md rounded-0"
-                placeholder="Company"
-                formControlName="company"
-                #company
-                [ngClass]="{
-                  'is-invalid':
-                    detailForm.get('company').touched &&
-                    detailForm.get('company').invalid
-                }"
-              />
-              <div class="invalid-feedback">
-                <div>Company is required</div>
+        <div class="row justify-content-between">
+          <label class="col-md-4">Company </label>
+          <div class="form-group col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-md rounded-0"
+              placeholder="Company"
+              formControlName="company"
+              #company
+              [ngClass]="{
+                'is-invalid': submitted && f.company.errors
+              }"
+            />
+            <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+              <div *ngIf="f.company.errors.required">
+                Company name is required
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="row">
-            <label class="col-md-4">Address :</label>
-            <div class="form-group col-md-8">
-              <textarea
-                rows="2"
-                type="text"
-                class="form-control form-control-md rounded-0"
-                placeholder="Address"
-                formControlName="address"
-                #address
-                [ngClass]="{
-                  'is-invalid':
-                    detailForm.get('address').touched &&
-                    detailForm.get('address').invalid
-                }"
-              ></textarea>
-              <div class="invalid-feedback">
-                <div>Address is required</div>
-              </div>
+        <div class="row justify-content-between">
+          <label class="col-md-4">Address </label>
+          <div class="form-group col-md-8">
+            <textarea
+              rows="2"
+              type="text"
+              class="form-control form-control-md rounded-0"
+              placeholder="Address"
+              formControlName="address"
+              #address
+              [ngClass]="{
+                'is-invalid': submitted && f.address.errors
+              }"
+            ></textarea>
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">Address is required</div>
             </div>
           </div>
-          <div class="text-center">
-            <button
-              style="margin: 2px; padding: 5px 20px 5px 20px;"
-              type="submit"
-              [disabled]="detailForm.invalid"
-              class="btn btn-primary pull-right"
-            >
-              {{ editMode ? "Update" : "Add" }} contact
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="text-center">
+          <button
+            style="margin: 2px; padding: 5px 20px 5px 20px;"
+            type="submit"
+            class="btn btn-primary pull-right"
+          >
+            {{ editMode ? "Update" : "Add" }} contact
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

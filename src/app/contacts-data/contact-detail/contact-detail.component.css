@@ -22,16 +22,26 @@ span.circle {
   padding-top: 20px;
 }
 
-label {
-  font-size: medium;
-}
+
 hr {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
 .detail {
-  margin-top: 90px;
-  padding-top: 90px;
+  margin-top: 33px;
   text-align: center;
+}
+
+.col-md-4{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+
+p{
+  word-break: break-all;
+}
+p.p{
+
 }

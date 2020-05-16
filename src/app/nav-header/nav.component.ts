@@ -4,7 +4,7 @@ import { ContactService } from '../services/contact.service';
 import { Message } from '../models/message';
 import { MessageService } from '../services/message.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { Subscription } from 'rxjs';
+import { Subscription, interval } from 'rxjs';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -17,6 +17,8 @@ export class NavComponent implements OnInit, OnDestroy {
   messages: Message[];
   constactSubs: Subscription;
   messageSub: Subscription;
+  currentuser: string;
+  intervelSub: Subscription;
   constructor(
     private contactService: ContactService,
     private messageService: MessageService
@@ -35,19 +37,22 @@ export class NavComponent implements OnInit, OnDestroy {
       .subscribe((messages) => {
         this.loadedmessages = messages;
       });
+    this.currentuser = this.contacts[0].fullname;
 
-    this.messages = this.loadedmessages.filter(
-      (msg) => msg.to === this.contacts[0].fullname
-    );
+    this.intervelSub = interval(300).subscribe(() => {
+      this.onUserChange(this.currentuser);
+    });
+
   }
 
   onUserChange(username: string) {
     this.messages = this.loadedmessages.filter((msg) => msg.to === username);
-    console.log(this.messages);
+    this.currentuser = username;
   }
 
   ngOnDestroy() {
     this.constactSubs.unsubscribe();
     this.messageSub.unsubscribe();
+    this.intervelSub.unsubscribe();
   }
 }

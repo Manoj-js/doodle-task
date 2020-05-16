@@ -1,79 +1,69 @@
-<div class="row">
-  <div class="col-xs-12" style="padding: 20px;">
-    <span>
-      <h4><i class="fa fa-address-book" aria-hidden="true"></i> Contacts</h4>
-    </span>
-    <p>welcome to contact page</p>
-    <div class="input-group">
-      <input
-        style="background-color: #e9ecef;"
-        [(ngModel)]="userFilter.fullname"
-        placeholder="search by name.."
-        class="form-control py-2 rounded-pill mr-1 pr-5"
-        type="search"
-        value="search"
-      />
-      <span class="input-group-append">
-        <button class="btn rounded-pill border-0 ml-n5" type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      </span>
-      <span>
-        <button
-          style="border-radius: 6px;"
-          class="btn btn-primary ml-2"
-          (click)="addContact()"
+<div class="card-body" style="padding: 10px;">
+  <div class="table-responsive table-body">
+    <table class="table table-bordered table-hover table-md">
+      <thead class="thead-light" style="text-align: center;">
+        <tr>
+
+
+          <th>+</th>
+          <th>Basic Info</th>
+          <th>Company</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let cust of contacts
+              | paginate: { itemsPerPage: 2, currentPage: p };
+            let i = index
+          "
+          [routerLink]="[i]"
+          (click)="onclick(cust.fullname)"
+          routerLinkActive="active"
         >
-          <i class="fa fa-plus" aria-hidden="true"></i> Add Contact
-        </button>
-      </span>
-    </div>
+
+          <td>
+            <button
+              style="padding: 5px 7px; cursor: pointer;"
+              class="btn btn-primary mt-3"
+              (click)="Model.show()"
+            >
+              <i class="fa fa-comments-o" aria-hidden="true"></i>
+            </button>
+          </td>
+          <td>
+            <span class="circle mr-2 pt-2">
+              <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+            </span>
+            <span class="text mt-1">
+              <p>
+                <strong>{{ cust.fullname }}</strong>
+              </p>
+              <p class="email">{{ cust.email }}</p>
+            </span>
+          </td>
+          <td class="text-center">
+            <p>
+              {{ cust.company }}
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p
+      class="text-center align-items-center"
+      *ngIf="(contacts).length === 0"
+    >
+      <strong> No contacts available</strong>
+    </p>
   </div>
 </div>
-<div class="card-body table-responsive-sm" style="padding: 5px;">
-  <table
-    style="text-align: justify;"
-    class="table table-bordered table-hover table-sm"
-  >
-    <thead class="thead-light">
-      <tr>
-        <th>+</th>
-        <th>Basic Info</th>
-        <th>Company</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let cust of contacts | filterBy: userFilter; let i = index"
-        [routerLink]="[i]"
-        (click)="onclick(cust.fullname)"
-        routerLinkActive="active"
-      >
-        <td style="align-items: center;">
-          <button
-            style="padding: 6px 8px; cursor: pointer;"
-            class="btn btn-primary mt-2"
-            (click)="Model.show()"
-          >
-            <i class="fa fa-comments-o" aria-hidden="true"></i>
-          </button>
-        </td>
-        <td>
-          <span class="circle mr-2 pt-2">
-            <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
-          </span>
-          <span class="text mt-1"
-            ><strong>{{ cust.fullname }}</strong>
-            <p class="email">{{ cust.email }}</p>
-          </span>
-        </td>
-        <td class="text-center">{{ cust.company  }}</td>
-      </tr>
-      <span *ngIf="(contacts | filterBy: userFilter).length === 0">
-        <strong> No matching contacts</strong></span
-      >
-    </tbody>
-  </table>
+
+<div class="pull-right">
+  <pagination-controls
+    class="my-pagination"
+    (pageChange)="p = $event"
+  ></pagination-controls>
 </div>
 
 <div
@@ -91,10 +81,10 @@
         <h4 class="modal-title">Message Box</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="messageForm">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Contact:</label>
-            <select class="form-control" #toContact>
+            <select class="form-control" formControlName="to" #toContact>
               <option *ngFor="let cont of contacts">
                 {{ cont.fullname }}</option
               >
@@ -106,6 +96,7 @@
               rows="2"
               type="text"
               class="form-control"
+              formControlName="message"
               #tomessage
               placeholder="Enter the message.."
             ></textarea>
@@ -124,6 +115,7 @@
           <button
             type="button"
             class="btn btn-primary"
+            [disabled]="messageForm.invalid"
             (click)="onSendMessage(toContact, tomessage)"
           >
             Send message

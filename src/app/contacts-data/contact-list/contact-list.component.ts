@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { Contact } from '../../models/contact';
-import { FilterPipe } from 'ngx-filter-pipe';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Message } from '../../models/message';
 import { MessageService } from '../../services/message.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
@@ -19,13 +19,15 @@ export class ContactListComponent implements OnInit, OnDestroy {
   messageForm: FormGroup;
   selectedUserName: string;
   contactSubscription: Subscription;
+  checkMode = false;
+  p = 1;
   @ViewChild('model') public Model: ModalDirective;
   constructor(
     private contactService: ContactService,
-    private filterPipe: FilterPipe,
     private router: Router,
     private route: ActivatedRoute,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
       .getupdatedContacts()
       .subscribe((contacts) => {
         this.contacts = contacts;
+        console.log(contacts);
       });
   }
 
@@ -56,12 +59,14 @@ export class ContactListComponent implements OnInit, OnDestroy {
       message: tomessage.value,
     };
     this.messageService.addMessage(message);
+
     this.Model.hide();
+    this.messageForm.reset();
   }
 
-  addContact() {
-    this.router.navigate(['new'], { relativeTo: this.route });
-  }
+
+
+
 
   ngOnDestroy() {
     this.contactSubscription.unsubscribe();

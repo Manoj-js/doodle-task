@@ -2,11 +2,25 @@ th {
   padding: 10px;
 }
 
+table{
+  max-width: 450px;
+  width: 100%5;
+}
 /* @media (max-width:767px) {
   td {
       width: 5px;
   }
 } */
+
+.modal-dialog {
+  min-height: calc(100vh - 0px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width:auto;
+
+}
 span.circle {
   height: 45px;
   width: 45px;
@@ -32,21 +46,16 @@ p.email {
   padding-left: 9px;
 
 }
+.container{
+  max-width: 400px;
+}
 
 
-.modal-dialog {
-  min-height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-}
-@media(max-width: 768px) {
-.modal-dialog {
-  min-height: calc(100vh - 20px);
-}
-}
+
 .modal-header {
   background-color:#007bff;
-  color: white;
+  color: #ffffff;
+}
+.my-pagination .ngx-pagination .current{
+  background-color:#007bff ;
 }
