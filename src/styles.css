@@ -1,11 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~ngx-toastr/toastr';
-html{
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~ngx-toastr/toastr";
+html {
   overflow-x: hidden;
-
 }
-
 
 body {
   overflow-y: hidden;
@@ -19,6 +17,6 @@ body.modal-open {
   height: 100%;
 }
 
-.my-pagination .ngx-pagination .current{
-  background-color:#007bff ;
+.my-pagination .ngx-pagination .current {
+  background-color: #007bff;
 }

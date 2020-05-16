@@ -39,6 +39,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
         this.contacts = contacts;
         console.log(contacts);
       });
+
   }
 
   private Form() {
@@ -59,14 +60,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
       message: tomessage.value,
     };
     this.messageService.addMessage(message);
-
     this.Model.hide();
     this.messageForm.reset();
   }
-
-
-
-
 
   ngOnDestroy() {
     this.contactSubscription.unsubscribe();

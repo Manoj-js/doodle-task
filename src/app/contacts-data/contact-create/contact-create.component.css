@@ -6,33 +6,32 @@ div.card-body {
   padding: 15px;
 }
 
-.card-header{
-  background-color: #e9ecef; padding: 13px;
+.card-header {
+  background-color: #e9ecef;
+  padding: 13px;
 }
+
 .detail {
   margin-top: 33px;
 
   text-align: center;
-
 }
 
 div.row {
   padding: 3px;
 }
-label.col-md-4{
 
+label.col-md-4 {
   display: flex;
 
   align-self: stretch;
-
-
-
 }
-.head{
+
+.head {
   display: inline-block;
   margin-left: 20px;
 }
 
-.delete{
+.delete {
   display: inline-block;
 }

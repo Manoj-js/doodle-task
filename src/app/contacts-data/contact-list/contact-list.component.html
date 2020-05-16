@@ -3,8 +3,6 @@
     <table class="table table-bordered table-hover table-md">
       <thead class="thead-light" style="text-align: center;">
         <tr>
-
-
           <th>+</th>
           <th>Basic Info</th>
           <th>Company</th>
@@ -21,7 +19,6 @@
           (click)="onclick(cust.fullname)"
           routerLinkActive="active"
         >
-
           <td>
             <button
               style="padding: 5px 7px; cursor: pointer;"
@@ -50,10 +47,7 @@
         </tr>
       </tbody>
     </table>
-    <p
-      class="text-center align-items-center"
-      *ngIf="(contacts).length === 0"
-    >
+    <p class="text-center align-items-center" *ngIf="contacts.length === 0">
       <strong> No contacts available</strong>
     </p>
   </div>
@@ -84,7 +78,8 @@
         <form [formGroup]="messageForm">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Contact:</label>
-            <select class="form-control" formControlName="to" #toContact>
+            <select [(ngModel)]="selectedUserName" class="form-control" formControlName="to" #toContact>
+              <option [disabled]="true">Please select</option>
               <option *ngFor="let cont of contacts">
                 {{ cont.fullname }}</option
               >

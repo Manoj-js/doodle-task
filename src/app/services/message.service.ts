@@ -9,15 +9,15 @@ export class MessageService {
   private messageUpdated = new Subject<Message[]>();
   private messages: Message[] = [
     {
-      from : 'akash',
-      to : 'manoj',
-      message : 'hi bro'
+      from: 'akash',
+      to: 'manoj',
+      message: 'hi bro',
     },
     {
-      from : 'manoj',
-      to : 'akash',
-      message : 'hi bro'
-    }
+      from: 'manoj',
+      to: 'akash',
+      message: 'hi bro',
+    },
   ];
   constructor() {}
 

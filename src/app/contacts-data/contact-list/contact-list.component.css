@@ -2,15 +2,10 @@ th {
   padding: 10px;
 }
 
-table{
+table {
   max-width: 450px;
   width: 100%5;
 }
-/* @media (max-width:767px) {
-  td {
-      width: 5px;
-  }
-} */
 
 .modal-dialog {
   min-height: calc(100vh - 0px);
@@ -18,8 +13,7 @@ table{
   flex-direction: column;
   justify-content: center;
 
-  width:auto;
-
+  width: auto;
 }
 span.circle {
   height: 45px;
@@ -40,22 +34,18 @@ p.email {
 }
 
 .fa-user-o {
-
   text-align: center;
 
   padding-left: 9px;
-
 }
-.container{
+.container {
   max-width: 400px;
 }
 
-
-
 .modal-header {
-  background-color:#007bff;
+  background-color: #007bff;
   color: #ffffff;
 }
-.my-pagination .ngx-pagination .current{
-  background-color:#007bff ;
+.my-pagination .ngx-pagination .current {
+  background-color: #007bff;
 }

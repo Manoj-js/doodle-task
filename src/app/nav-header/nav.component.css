@@ -3,7 +3,7 @@
 }
 
 #nav-img {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .modal-dialog {
@@ -12,8 +12,7 @@
   flex-direction: column;
   justify-content: center;
 
-  width:auto;
-
+  width: auto;
 }
 
 .modal {
@@ -21,14 +20,15 @@
 }
 
 .modal-header {
-  background-color:#007bff;
-  color: #FFFFFF;
+  background-color: #007bff;
+  color: #ffffff;
 }
-.list-group-item{
+.list-group-item {
   word-break: break-all;
 }
 
-a{}
+a {
+}
 
 .selectWrapper {
   width: 100%;
@@ -36,36 +36,36 @@ a{}
   position: relative;
   border: 2px solid rgb(228, 228, 230);
   border-radius: 3px;
-  background:#FFFFFF
+  background: #ffffff;
 }
 
-select .selectWrapper  {
-      padding: 12px 40px 12px 20px;
-      font-size: 19px;
-      line-height: 25px;
-      width: 100%;
-      border: none;
-      box-shadow: none;
-      background: transparent;
-      background-image: none;
-      outline : none;
-      overflow : hidden;
-      text-indent : 0.01px;
-      text-overflow : '';
-      outline: none;
-      cursor: pointer;
-      -moz-appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-       -ms-appearance: none;
-        -o-appearance: none;
-           appearance: none;
-  }
-
-  select.selectWrapper::-ms-expand {
-    display: none;
+select .selectWrapper {
+  padding: 12px 40px 12px 20px;
+  font-size: 19px;
+  line-height: 25px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  outline: none;
+  overflow: hidden;
+  text-indent: 0.01px;
+  text-overflow: "";
+  outline: none;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
 }
-select{
+
+select.selectWrapper::-ms-expand {
+  display: none;
+}
+select {
   display: inline-block;
   padding-top: 2px;
 }

@@ -42,7 +42,6 @@ export class NavComponent implements OnInit, OnDestroy {
     this.intervelSub = interval(300).subscribe(() => {
       this.onUserChange(this.currentuser);
     });
-
   }
 
   onUserChange(username: string) {

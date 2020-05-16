@@ -9,31 +9,28 @@ export class ContactService {
   private contactChanged = new Subject<Contact[]>();
   private contacts: Contact[] = [
     {
-      fullname : 'manoj',
-      email : 'manoj@doodleblue.com',
+      fullname: 'manoj',
+      email: 'manoj@doodleblue.com',
       address: 'k.k nagar',
       company: 'DoodleBlue Inovations',
       phone: 7299545375,
-      isSelected: false
-
+      isSelected: false,
     },
     {
-      fullname : 'aravind',
-      email : 'aravind@doodleblue.com',
+      fullname: 'aravind',
+      email: 'aravind@doodleblue.com',
       address: 'k.k nagar',
       company: 'DoodleBlue Inovations',
       phone: 7299545375,
-      isSelected: false
-
+      isSelected: false,
     },
     {
-      fullname : 'akash',
-      email : 'akash@doodleblue.com',
+      fullname: 'akash',
+      email: 'akash@doodleblue.com',
       address: 'k.k nagar',
       company: 'DoodleBlue Inovations',
       phone: 7299545375,
-      isSelected: false
-
+      isSelected: false,
     },
   ];
 
@@ -54,7 +51,6 @@ export class ContactService {
     this.contacts.unshift(contact);
     this.contactChanged.next(this.contacts.slice());
   }
-
 
   updateContact(index: number, contact: Contact) {
     this.contacts[index] = contact;
