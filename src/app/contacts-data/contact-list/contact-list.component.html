@@ -78,8 +78,8 @@
         <form [formGroup]="messageForm">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Contact:</label>
-            <select [(ngModel)]="selectedUserName" class="form-control" formControlName="to" #toContact>
-              <option [disabled]="true">Please select</option>
+            <select  class="form-control" formControlName="to" #toContact>
+              <option [selected]="true" [disabled]="true">Please select</option>
               <option *ngFor="let cont of contacts">
                 {{ cont.fullname }}</option
               >
